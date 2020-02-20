@@ -25,11 +25,12 @@ void Schedule(int thread_count, int n);
 
 int main(int argc, char* argv[]) {
    int thread_count, n;
-   
+ 
    if (argc != 3) Usage(argv[0]);
    Get_args(argv, &thread_count, &n);
    
    Schedule(thread_count, n);
+   
 
    return 0;
 }  /* main */
@@ -72,24 +73,28 @@ void Schedule(int thread_count, int n) {
    int  i;
    int* min = malloc(thread_count*sizeof(int));
    int* max = malloc(thread_count*sizeof(int));
-   
-   for (i = 0; i < thread_count; i++) {
-      min[i] = n;
-      max[i] = 0;
+  
+
+   /*aqui*/
+   #pragma omp parallel for num_threads(thread_count)
+
+   for (i = 0; i < n; i++) {
+      max[omp_get_thread_num()] = i;
    }
    
-   ** TODO **
-   }  /* End of omp parallel */
+   /* imprimir en donde empieza y donde termina la asignacion de manera paralela 
+   /* End of omp parallel */
    
    for (i = 0; i < thread_count; i++) {
-      if (min[i] == n && max[i] == 0)
+      if (max[i] == 0)
          printf("Th %d > No iterations\n", i);
-      else if (min[i] != max[i])
-         printf("Th %d > Iterations %d - %d\n", i, min[i], max[i]);
       else
-         printf("Th %d > Iteration  %d\n", i, min[i]);
+         printf("Th %d > Iteration  %d\n", i, max[i]);
    }
    
    free(min);
    free(max);
+
+
 }  /* Schedule */
+
