@@ -1,3 +1,17 @@
+/*
+
+   Universidad del VAlle de Guatemala
+
+   Editoras: Michelle Bloomfield
+             Ivette Cardona
+             Andrea Cordon
+
+   Se utilizo el programa scheduleParFor.c y se edito para poder realizar el ejercicio
+
+*/
+
+
+
 /* File:   scheduleParFor.c
  * Purpose:   Output the default scheduling used in a parallel for loop
  *
