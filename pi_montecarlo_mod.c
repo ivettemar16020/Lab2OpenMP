@@ -57,8 +57,8 @@ int main(int argc, char* argv[])
 	pi = 4.0 * ((long double)score / (long double)number_of_tosses);
 
 	double time_spent_parallel = endParallel - beginParallel;
-	printf("\n\t Calculated pi : %.12Lf\n", pi);
-	printf(	 "\t       Real pi : %.12Lf\n", REAL_PI);
+	printf("\n\t Calculated pi : %.5Lf\n", pi);
+	printf(	 "\t       Real pi : %.5Lf\n", REAL_PI);
 	printf("\n\t Execution Time: %f\n", time_spent_parallel);
 
 	return(0);	
