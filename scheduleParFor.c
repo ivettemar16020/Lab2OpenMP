@@ -75,9 +75,10 @@ void Schedule(int thread_count, int n) {
    int* max = malloc(thread_count*sizeof(int));
   
 
-   /*aqui*/
+   /*se realiza un pragma para realizar los threads*/
    #pragma omp parallel for num_threads(thread_count)
 
+   //se asigna la cantidad de iteraciones en el thread asignado
    for (i = 0; i < n; i++) {
       max[omp_get_thread_num()] = i;
    }
